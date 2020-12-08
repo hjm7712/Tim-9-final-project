@@ -1,6 +1,7 @@
 #include "user.h"
 
 using namespace std;
+using namespace sf;
 
 User::User(int ID)
 {
@@ -20,7 +21,14 @@ pair<int,int> User::get_position()
 
 void User::MovePlayer()
 {
-
+	if(id == 0)	//player 1
+	{
+		if(Keyboard::isKeyPressed(Keyboard::Right))
+	}
+	else		//player 2
+	{
+		
+	}
 }
 
 
