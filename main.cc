@@ -20,22 +20,23 @@ int main(){
 	while(app.isOpen()){
 	Sprite sStart(t0);
 	app.draw(sStart);
+	app.display();
+	Event event;
 
-		Event event;
 
+	while(app.pollEvent(event)){
 
-		while(app.pollEvent(event)){
-
-			switch(event.type){
+		switch(event.type){
 				
-				case Event::Closed:
-					app.close();
-					break;
+			case Event::Closed:
+				app.close();
+				break;
 
-				case Event::KeyPressed:
+			case Event::KeyPressed:
+				while(1){
 					//game start!
 					Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf(t5);
-	
+
 					std::pair<int, int> plat[5];
 
 					plat[0].first = 100;
@@ -51,7 +52,6 @@ int main(){
 					plat[4].second = 500;
 					plat[5].first = 800;
 					plat[5].second = 250;
-
 					app.draw(sBackground);
 
 					for(int i=0;i<6;i++){
@@ -66,7 +66,11 @@ int main(){
 					app.draw(sPlayer2);
 
 					app.display();
-					break;
+
+					if(Keyboard::isKeyPressed(Keyboard::Q))
+						break;
+				}
+				break;
 			}
 		}
 	}
