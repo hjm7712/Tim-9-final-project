@@ -17,6 +17,12 @@ int main(){
 	t4.loadFromFile("images/player2.png");
 	t5.loadFromFile("images/knife.png");
 
+	int p1x, p1y, p2x, p2y;
+	p1x = 100; p1y = 550; p2x = 800; p2y = 550;
+	int dy1, dy2, dx1, dx2;
+	dy1 = 0; dy2 = 0; dx1 = 0; dx2 = 0;
+
+
 	while(app.isOpen()){
 	Sprite sStart(t0);
 	app.draw(sStart);
@@ -25,6 +31,9 @@ int main(){
 
 
 	while(app.pollEvent(event)){
+		if(Keyboard::isKeyPressed(Keyboard::Q))
+			app.close();
+
 
 		switch(event.type){
 				
@@ -59,15 +68,36 @@ int main(){
 						app.draw(sPlate);
 					}
 
-					sPlayer1.setPosition(100,600);
+					//gravity
+					if(p1y + 103 < 750)
+						dy1 += 1;
+					else
+						dy1 = 0;
+					p1y += dy1;
+
+					if(p2y + 109 < 750)
+						dy2 += 1;
+					else
+						dy2 = 0;
+					p2y += dy2;
+
+					// player1 movement //
+					
+
+					//------------------//
+					sPlayer1.setPosition(p1x,p1y);
 					app.draw(sPlayer1);
 
-					sPlayer2.setPosition(800,600);
+					// player2 maovment //
+
+
+					//------------------//
+					sPlayer2.setPosition(p2x,p2y);
 					app.draw(sPlayer2);
 
 					app.display();
 
-					if(Keyboard::isKeyPressed(Keyboard::Q))
+					if(Keyboard::isKeyPressed(Keyboard::P))
 						break;
 				}
 				break;
