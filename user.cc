@@ -59,16 +59,10 @@ void User::Jump()
 	dy = -12;	
 }
 
-/*void User::Attack(User *u)
+void User::Damage()
 {
-	Bullet bullet(position, app);
-	if(id==0){
-		bullet.Move(0);
-	}
-	else if(id==1){
-		bullet.Move(1);
-	}
-}*/
+	life--;
+}
 
 int User::get_life()
 {
