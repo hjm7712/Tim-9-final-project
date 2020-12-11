@@ -19,7 +19,7 @@ public:
 	User(int ID, RenderWindow *app);
 	~User();
 	pair<int,int> get_position();
-	void MovePlayer();
+	void MovePlayer(int type);
 	void Jump();
 	void Attack(User *u);
 };

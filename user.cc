@@ -21,22 +21,22 @@ pair<int,int> User::get_position()
 	return position;
 }
 
-void User::MovePlayer()
+void User::MovePlayer(int type)
 {
 	if(id == 0)	//player 1
 	{
-		if(Keyboard::isKeyPressed(Keyboard::V))
+		if(type == 1)
 			position.first+=3;
-		if(Keyboard::isKeyPressed(Keyboard::X))
+		else if(type == 2)
 			position.first-=3;
 		if(Keyboard::isKeyPressed(Keyboard::D) && dy == 0)
 			Jump();
 	}
 	else		//player 2
 	{
-		if(Keyboard::isKeyPressed(Keyboard::Right))
+		if(type == 1)
 			position.first+=3;
-		if(Keyboard::isKeyPressed(Keyboard::Left))
+		else if(type == 2)
 			position.first-=3;
 		if(Keyboard::isKeyPressed(Keyboard::Up) && dy == 0)
 			Jump();

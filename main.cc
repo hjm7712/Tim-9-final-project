@@ -23,7 +23,7 @@ int main(){
 	p1x = 100; p1y = 550; p2x = 800; p2y = 550;
 	int dy1, dy2, dx1, dx2;
 	dy1 = 0; dy2 = 0; dx1 = 0; dx2 = 0;
-
+	User U1(0, &app), U2(1, &app);
 
 	while(app.isOpen()){
 		Sprite sStart(t0);
@@ -70,11 +70,10 @@ int main(){
 							app.draw(sPlate);
 						}
 	
-						User U1(0, &app), U2(1, &app);
 						// player1 movement //
 						p1x=U1.get_position().first;
 						p1y=U1.get_position().second;
-
+						
 						//------------------//
 						sPlayer1.setPosition(p1x,p1y);
 						app.draw(sPlayer1);
@@ -82,7 +81,7 @@ int main(){
 						// player2 maovment //
 						p2x=U2.get_position().first;
 						p2y=U2.get_position().second;
-
+						
 						//------------------//
 						sPlayer2.setPosition(p2x,p2y);
 						app.draw(sPlayer2);
@@ -91,7 +90,14 @@ int main(){
 						if(Keyboard::isKeyPressed(Keyboard::A)){
 							U1.Attack(&U2);
 						}
-
+						if(Keyboard::isKeyPressed(Keyboard::V))
+							U1.MovePlayer(1);
+						if(Keyboard::isKeyPressed(Keyboard::X))
+							U1.MovePlayer(2);
+						if(Keyboard::isKeyPressed(Keyboard::Right))
+							U2.MovePlayer(1);
+						if(Keyboard::isKeyPressed(Keyboard::Left))
+							U2.MovePlayer(2);
 
 						app.display();
 
