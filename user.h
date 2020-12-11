@@ -22,6 +22,7 @@ public:
 	void MovePlayer(int type);
 	void Jump();
 	void Attack(User *u);
+	int get_life();
 };
 
 

@@ -48,21 +48,20 @@ int main(){
 						//game start!
 						Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf(t5);
 
-						std::pair<int, int> plat[5];
+						std::pair<int, int> plat[3];
 	
-						plat[0].first = 100;
+						plat[0].first = 50;
 						plat[0].second = 250;
 						plat[1].first = 200;
 						plat[1].second = 500;
-						plat[2].first = 300;
-						plat[2].second = 250;
+						
+						
 
-						plat[3].first = 600;
-						plat[3].second = 250;
-						plat[4].first = 700;
-						plat[4].second = 500;
-						plat[5].first = 800;
-						plat[5].second = 250;
+						plat[2].first = 650;
+						plat[2].second = 250;
+						plat[3].first = 8000;
+						plat[3].second = 500;
+						
 						app.draw(sBackground);
 
 						for(int i=0;i<6;i++){
