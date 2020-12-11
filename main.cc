@@ -1,6 +1,8 @@
 #include<SFML/Graphics.hpp>
 #include<time.h>
 #include<utility>
+#include"user.h"
+
 using namespace sf;
 
 int main(){
@@ -24,85 +26,75 @@ int main(){
 
 
 	while(app.isOpen()){
-	Sprite sStart(t0);
-	app.draw(sStart);
-	app.display();
-	Event event;
+		Sprite sStart(t0);
+		app.draw(sStart);
+		app.display();
+		Event event;
 
 
-	while(app.pollEvent(event)){
-		if(Keyboard::isKeyPressed(Keyboard::Q))
-			app.close();
-
-
-		switch(event.type){
-				
-			case Event::Closed:
+		while(app.pollEvent(event)){
+			if(Keyboard::isKeyPressed(Keyboard::Q))
 				app.close();
-				break;
 
-			case Event::KeyPressed:
-				while(1){
-					//game start!
-					Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf(t5);
 
-					std::pair<int, int> plat[5];
+			switch(event.type){
+				
+				case Event::Closed:
+					app.close();
+					break;
 
-					plat[0].first = 100;
-					plat[0].second = 250;
-					plat[1].first = 200;
-					plat[1].second = 500;
-					plat[2].first = 300;
-					plat[2].second = 250;
+				case Event::KeyPressed:
+					while(1){
+						//game start!
+						Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf(t5);
 
-					plat[3].first = 600;
-					plat[3].second = 250;
-					plat[4].first = 700;
-					plat[4].second = 500;
-					plat[5].first = 800;
-					plat[5].second = 250;
-					app.draw(sBackground);
+						std::pair<int, int> plat[5];
+	
+						plat[0].first = 100;
+						plat[0].second = 250;
+						plat[1].first = 200;
+						plat[1].second = 500;
+						plat[2].first = 300;
+						plat[2].second = 250;
 
-					for(int i=0;i<6;i++){
-						sPlate.setPosition(plat[i].first, plat[i].second);
-						app.draw(sPlate);
+						plat[3].first = 600;
+						plat[3].second = 250;
+						plat[4].first = 700;
+						plat[4].second = 500;
+						plat[5].first = 800;
+						plat[5].second = 250;
+						app.draw(sBackground);
+
+						for(int i=0;i<6;i++){
+							sPlate.setPosition(plat[i].first, plat[i].second);
+							app.draw(sPlate);
+						}
+	
+						User U1(0, &app), U2(1, &app);
+						// player1 movement //
+						p1x=U1.get_position().first;
+						p1y=U1.get_position().second;
+
+						//------------------//
+						sPlayer1.setPosition(p1x,p1y);
+						app.draw(sPlayer1);
+
+						// player2 maovment //
+						p2x=U2.get_position().first;
+						p2y=U2.get_position().second;
+
+						//------------------//
+						sPlayer2.setPosition(p2x,p2y);
+						app.draw(sPlayer2);
+
+						app.display();
+
+						if(Keyboard::isKeyPressed(Keyboard::P))
+							break;
 					}
-
-					//gravity
-					if(p1y + 103 < 750)
-						dy1 += 1;
-					else
-						dy1 = 0;
-					p1y += dy1;
-
-					if(p2y + 109 < 750)
-						dy2 += 1;
-					else
-						dy2 = 0;
-					p2y += dy2;
-
-					// player1 movement //
-					
-
-					//------------------//
-					sPlayer1.setPosition(p1x,p1y);
-					app.draw(sPlayer1);
-
-					// player2 maovment //
-
-
-					//------------------//
-					sPlayer2.setPosition(p2x,p2y);
-					app.draw(sPlayer2);
-
-					app.display();
-
-					if(Keyboard::isKeyPressed(Keyboard::P))
-						break;
+					break;
 				}
-				break;
 			}
-		}
 	}
 	return 0;
 }
