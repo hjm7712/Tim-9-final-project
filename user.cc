@@ -6,7 +6,6 @@ using namespace sf;
 User::User(int ID, RenderWindow *app)
 {
 	id = ID;
-	score = 0;
 	position = ID ? make_pair(800, 600) : make_pair(100, 600);
 	dy = 0;
 	life = 5;
@@ -48,7 +47,7 @@ void User::Jump()
 	
 }
 
-void User::Attack(User *u)
+/*void User::Attack(User *u)
 {
 	Bullet bullet(position, app);
 	if(id==0){
@@ -57,6 +56,6 @@ void User::Attack(User *u)
 	else if(id==1){
 		bullet.Move(1);
 	}
-}
+}*/
 
 

@@ -9,7 +9,6 @@ class User
 {
 private:
 	int id;
-	int score;
 	pair<int,int> position;
 	float dy;
 	int life;
@@ -21,7 +20,7 @@ public:
 	pair<int,int> get_position();
 	void MovePlayer(int type);
 	void Jump();
-	void Attack(User *u);
+	//void Attack(User *u);
 };
 
 
