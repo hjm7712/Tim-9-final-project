@@ -9,6 +9,7 @@ private:
 	int id;
 	int score;
 	pair<int,int> position;
+	float dy;
 	int life;
 	time_t last_attack;
 public:
@@ -16,6 +17,8 @@ public:
 	~User();
 	pair<int,int> get_position();
 	void MovePlayer();
+	void Jump();
+	void Attack();
 }
 
 
