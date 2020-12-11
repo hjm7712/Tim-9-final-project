@@ -115,14 +115,14 @@ int main(){
 						u2_x=U2.get_position().first;
 						u2_y=U2.get_position().second;
 
-						if(u1_x>mv2_x-80 && u1_x<mv2_x && u1_y>mv2_y-45 && u1_y<mv2_y+10){
+						if(u1_x>mv2_x-80 && u1_x<mv2_x && u1_y>mv2_y-80 && u1_y<mv2_y+10){
 							if(bullet_2.get_hit()==0){
 								bullet_2.set_hit(1);
 								U1.Damage();
 								cout << "damage1" << endl;
 							}
 						}
-						if(u2_x>mv1_x-80 && u2_x<mv1_x && u2_y>mv1_y-45 && u2_y<mv1_y+10){
+						if(u2_x>mv1_x-80 && u2_x<mv1_x && u2_y>mv1_y-80 && u2_y<mv1_y+10){
 							if(bullet_1.get_hit()==0){
 								bullet_1.set_hit(1);
 								U2.Damage();
