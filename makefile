@@ -13,4 +13,6 @@ bullet.o: bullet.cc
 		g++ -std=c++11 -c $^
 
 run:
-		./main.exe
+		./game.exe
+clean:
+		rm *.o game.exe

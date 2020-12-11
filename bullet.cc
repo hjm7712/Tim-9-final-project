@@ -3,9 +3,10 @@
 #include <time.h>
 using namespace sf;
 
-Bullet::Bullet(pair<int,int> position){
+Bullet::Bullet(pair<int,int> position, RenderWindow *app){
 	this->position=position;
 	velocity=20;
+	this->app = app;
 }
 
 pair<int,int> Bullet::Get_Position(){
@@ -24,24 +25,24 @@ void Bullet::Move(int dir){
 	Sprite sBullet(bullet_img);
 
 	if(dir==0){	//user 1 left side
-		if(Keyboard::isKeyPressed(Keyboard::Q)){
+		if(Keyboard::isKeyPressed(Keyboard::A)){
 			while(1){
 				for(int i=0; i<velocity; i++){
 					sBullet.setPosition(x++,y);
-					app.draw(sBullet);
+					app->draw(sBullet);
 				}
-				app.display();
+				app->display();
 			}
 		}
 	}
 	else if(dir==1){//user 2 right side
-		if(Keyboard::isKeyPressed(Keyboard::P)){
+		if(Keyboard::isKeyPressed(Keyboard::L)){
 			while(1){
 				for(int i=0; i<velocity; i++){
 					sBullet.setPosition(x--,y);
-					app.draw(sBullet);
+					app->draw(sBullet);
 				}
-				app.display();
+				app->display();
 			}
 		}
 	}

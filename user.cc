@@ -3,7 +3,7 @@
 #include "bullet.h"
 using namespace sf;
 
-User::User(int ID)
+User::User(int ID, RenderWindow *app)
 {
 	id = ID;
 	score = 0;
@@ -11,6 +11,7 @@ User::User(int ID)
 	dy = 0;
 	life = 5;
 	last_attack = time(NULL)-100;
+	this->app = app;
 }
 
 User::~User() {}
@@ -49,7 +50,7 @@ void User::Jump()
 
 void User::Attack(User *u)
 {
-	Bullet bullet(position);
+	Bullet bullet(position, app);
 	if(id==0){
 		bullet.Move(0);
 	}
