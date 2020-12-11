@@ -5,7 +5,7 @@ using namespace sf;
 
 Bullet::Bullet(){
 	this->position=make_pair(-1000,-1000);
-	velocity=10;
+	velocity=25;
 }
 
 void Bullet::set_position(pair<int,int> position){
