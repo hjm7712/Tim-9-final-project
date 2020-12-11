@@ -5,11 +5,13 @@ using namespace std;
 
 Bullet::Bullet(pair<int,int> position){
 	this.position=position;
+	velocity=20;
 }
 
 pair<int,int> Bullet::Get_Position(){
 	return position;
 }
+
 
 void Bullet::Move(int dir){
 	pair<int,int> position;
