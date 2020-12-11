@@ -109,6 +109,27 @@ int main(){
 						sKnf_2.setPosition(mv2_x,mv2_y);
 						app.draw(sKnf_2);
 
+						int u1_x,u1_y,u2_x,u2_y;
+						u1_x=U1.get_position().first;
+						u1_y=U1.get_position().second;
+						u2_x=U2.get_position().first;
+						u2_y=U2.get_position().second;
+
+						if(u1_x>mv2_x-80 && u1_x<mv2_x && u1_y>mv2_y-45 && u1_y<mv2_y+10){
+							if(bullet_2.get_hit()==0){
+								bullet_2.set_hit(1);
+								U1.Damage();
+								cout << "damage1" << endl;
+							}
+						}
+						if(u2_x>mv1_x-80 && u2_x<mv1_x && u2_y>mv1_y-45 && u2_y<mv1_y+10){
+							if(bullet_1.get_hit()==0){
+								bullet_1.set_hit(1);
+								U2.Damage();
+								cout << "damage2" << endl;
+							}
+						}
+
 						time_t now=time(NULL);
 
 						if(Keyboard::isKeyPressed(Keyboard::A) && difftime(now,fire_1)>=1){
@@ -118,8 +139,22 @@ int main(){
 							sKnf_1.setPosition(x,y);
 							app.draw(sKnf_1);
 							bullet_1.set_position(make_pair(x,y));
+							bullet_1.set_hit(0);
 							fire_1=time(NULL);
 						}
+
+						if(Keyboard::isKeyPressed(Keyboard::L) && difftime(now,fire_2)>=1){
+							int x,y;
+							x=U2.get_position().first;
+							y=U2.get_position().second;
+							sKnf_2.setPosition(x,y);
+							app.draw(sKnf_2);
+							bullet_2.set_position(make_pair(x,y));
+							bullet_2.set_hit(0);
+							fire_2=time(NULL);
+						}
+
+
 						switch(U1.get_life()){
 							case 3:
 								sPlayer1_life3.setPosition(p1x+20,p1y);
@@ -158,18 +193,6 @@ int main(){
 								break;
 						}
 							
-
-
-						if(Keyboard::isKeyPressed(Keyboard::L) && difftime(now,fire_2)>=1){
-							int x,y;
-							x=U2.get_position().first;
-							y=U2.get_position().second;
-							sKnf_2.setPosition(x,y);
-							app.draw(sKnf_2);
-							bullet_2.set_position(make_pair(x,y));
-							fire_2=time(NULL);
-						}
-
 
 						if(Keyboard::isKeyPressed(Keyboard::V))
 							U1.MovePlayer(1);
