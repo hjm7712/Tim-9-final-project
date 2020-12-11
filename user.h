@@ -9,7 +9,6 @@ class User
 {
 private:
 	int id;
-	int score;
 	pair<int,int> position;
 	float dy;
 	int life;
