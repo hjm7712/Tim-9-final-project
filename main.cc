@@ -48,32 +48,27 @@ int main(){
 	while(app.isOpen()){
 		Sprite sStart(t0);
 		Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf_1(t5),sKnf_2(t6);
-		Sprite sPlayer1_life0(t10), sPlayer1_life1(t11), sPlayer1_life2(t12), sPlayer1_life3(t13), sPlayer2_life0(t20), sPlayer2_life1(t21), sPlayer2_life2(t22), sPlayer2_life3(t23);
+		Sprite sPlayer1_life0(t10), sPlayer1_life1(t11), sPlayer1_life2(t12), sPlayer1_life3(t13);
+		Sprite sPlayer2_life0(t20), sPlayer2_life1(t21), sPlayer2_life2(t22), sPlayer2_life3(t23);
 		Sprite sPlayer2_Win(t29);
 		Sprite sPlayer1_Win(t19);
 		app.draw(sStart);
 		app.display();
 		Event event;
 
-
 		while(app.pollEvent(event)){
 			if(Keyboard::isKeyPressed(Keyboard::Q))
 				app.close();
 
-
 			switch(event.type){
-				
 				case Event::Closed:
 					app.close();
 					break;
-
 				case Event::KeyPressed:
 					while(1){
-						//game start!
 						std::pair<int, int> plat[4];
 						if(Keyboard::isKeyPressed(Keyboard::P))
 							break;
-							
 						if(!U1.get_life() || !U2.get_life()){
 							if(!U1.get_life()){
 								app.draw(sPlayer2_Win);
@@ -85,7 +80,6 @@ int main(){
 								app.display();
 								sleep(4);
 							}
-							
 							exit(0);
 						}
 							
@@ -106,23 +100,18 @@ int main(){
 							app.draw(sPlate);
 						}
 	
-						// player1 movement //
 						p1x=U1.get_position().first;
 						p1y=U1.get_position().second;
 						
-						//------------------//
 						sPlayer1.setPosition(p1x,p1y);
 						app.draw(sPlayer1);
 
-						// player2 maovment //
 						p2x=U2.get_position().first;
 						p2y=U2.get_position().second;
 						
-						//------------------//
 						sPlayer2.setPosition(p2x,p2y);
 						app.draw(sPlayer2);
 
-						//------------------//
 						int mv1_x,mv1_y,mv2_x,mv2_y;
 						mv1_x=bullet_1.MoveBullet1().first;
 						mv1_y=bullet_1.MoveBullet1().second;
