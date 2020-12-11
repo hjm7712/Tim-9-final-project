@@ -1,10 +1,10 @@
 #include "bullet.h"
 #include <SFML/Graphics.hpp>
-#include <iostream>
-using namespace std;
+#include <time.h>
+using namespace sf;
 
 Bullet::Bullet(pair<int,int> position){
-	this.position=position;
+	this->position=position;
 	velocity=20;
 }
 

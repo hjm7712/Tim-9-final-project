@@ -1,3 +1,5 @@
+#include <utility>
+using namespace std;
 class Bullet{
 	private:
 		pair<int,int> position;
@@ -5,6 +7,6 @@ class Bullet{
 	public:
 		Bullet(pair<int,int> position);
 		~Bullet(){};
-		pair<int,int> get_position();
+		pair<int,int> Get_Position();
 		void Move(int dir);
-}
+};

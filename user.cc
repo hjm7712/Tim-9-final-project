@@ -1,6 +1,6 @@
+#include <SFML/Graphics.hpp>
 #include "user.h"
-
-using namespace std;
+#include "bullet.h"
 using namespace sf;
 
 User::User(int ID)
@@ -28,7 +28,7 @@ void User::MovePlayer()
 			position.first+=3;
 		if(Keyboard::isKeyPressed(Keyboard::X))
 			position.first-=3;
-		if(Keyboard::isKeyPressed(Keyboard::D) && dy = 0)
+		if(Keyboard::isKeyPressed(Keyboard::D) && dy == 0)
 			Jump();
 	}
 	else		//player 2
@@ -37,7 +37,7 @@ void User::MovePlayer()
 			position.first+=3;
 		if(Keyboard::isKeyPressed(Keyboard::Left))
 			position.first-=3;
-		if(Keyboard::isKeyPressed(Keyboard::Up) && dy = 0)
+		if(Keyboard::isKeyPressed(Keyboard::Up) && dy == 0)
 			Jump();
 	}
 }
@@ -49,7 +49,13 @@ void User::Jump()
 
 void User::Attack(User *u)
 {
-	
+	Bullet bullet(position);
+	if(id==0){
+		bullet.Move(0);
+	}
+	else if(id==1){
+		bullet.Move(1);
+	}
 }
 
 

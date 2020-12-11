@@ -1,4 +1,4 @@
-#include <utiliy>
+#include <utility>
 #include <ctime>
 
 using namespace std;
@@ -18,7 +18,7 @@ public:
 	pair<int,int> get_position();
 	void MovePlayer();
 	void Jump();
-	void Attack();
-}
+	void Attack(User *u);
+};
 
 
