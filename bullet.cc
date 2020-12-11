@@ -21,12 +21,12 @@ int Bullet::get_hit(){
 	return hit;
 }
 
-pair<int,int> Bullet::move_1_position(){
+pair<int,int> Bullet::MoveBullet1(){
 	position.first+=velocity;
 	return position;
 }
 
-pair<int,int> Bullet::move_2_position(){
+pair<int,int> Bullet::MoveBullet2(){
 	position.first-=velocity;
 	return position;
 }

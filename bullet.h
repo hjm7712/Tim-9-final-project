@@ -14,6 +14,6 @@ class Bullet{
 		void set_position(pair<int,int> position);
 		void set_hit(int hit);
 		int get_hit();
-		pair<int,int> move_1_position();
-		pair<int,int> move_2_position();
+		pair<int,int> MoveBullet1();
+		pair<int,int> MoveBullet2();
 };

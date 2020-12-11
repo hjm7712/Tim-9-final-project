@@ -23,7 +23,7 @@ public:
 	void Damage();
 	int get_life();
 	float get_dy();
-	void plus_y();
+	void Gravity();
 };
 
 

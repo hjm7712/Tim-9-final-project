@@ -74,7 +74,7 @@ float User::get_dy()
 	return dy;
 }
 
-void User::plus_y()
+void User::Gravity()
 {
 	if(dy != 0)
 		dy += 0.2;

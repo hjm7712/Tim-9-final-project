@@ -124,10 +124,10 @@ int main(){
 
 						//------------------//
 						int mv1_x,mv1_y,mv2_x,mv2_y;
-						mv1_x=bullet_1.move_1_position().first;
-						mv1_y=bullet_1.move_1_position().second;
-						mv2_x=bullet_2.move_2_position().first;
-						mv2_y=bullet_2.move_2_position().second;
+						mv1_x=bullet_1.MoveBullet1().first;
+						mv1_y=bullet_1.MoveBullet1().second;
+						mv2_x=bullet_2.MoveBullet2().first;
+						mv2_y=bullet_2.MoveBullet2().second;
 						sKnf_1.setPosition(mv1_x,mv1_y);
 						app.draw(sKnf_1);
 						sKnf_2.setPosition(mv2_x,mv2_y);
@@ -230,8 +230,8 @@ int main(){
 							U2.MovePlayer(2);
 						if(Keyboard::isKeyPressed(Keyboard::Up) && U2.get_dy() == 0)
 							U2.MovePlayer(3);
-						U1.plus_y();
-						U2.plus_y();
+						U1.Gravity();
+						U2.Gravity();
 
 
 						app.display();
