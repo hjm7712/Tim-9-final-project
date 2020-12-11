@@ -1,9 +1,12 @@
-#include<SFML/Graphics.hpp>
-#include<ctime>
-#include<utility>
-#include"user.h"
-#include"bullet.h"
+#include <SFML/Graphics.hpp>
+#include <ctime>
+#include <utility>
+#include "user.h"
+#include "bullet.h"
 #include <iostream>
+#include <unistd.h>
+#include <cstdlib>
+
 using namespace std;
 using namespace sf;
 
@@ -13,7 +16,7 @@ int main(){
 	RenderWindow app(VideoMode(1000, 750), "Among Us!");
 	app.setFramerateLimit(60);
 
-	Texture t0, t1, t2, t3, t4, t5, t6, t10, t11, t12, t13, t20, t21, t22, t23;
+	Texture t0, t1, t2, t3, t4, t5, t6, t10, t11, t12, t13, t19, t20, t21, t22, t23, t29;
 	t0.loadFromFile("images/gamestart_2.png");
 	t1.loadFromFile("images/background.png");
 	t2.loadFromFile("images/platform.png");
@@ -25,10 +28,12 @@ int main(){
 	t11.loadFromFile("images/player1_life1.png");
 	t12.loadFromFile("images/player1_life2.png");
 	t13.loadFromFile("images/player1_life3.png");
+	t19.loadFromFile("images/player1win.png");
 	t20.loadFromFile("images/player2_life0.png");
 	t21.loadFromFile("images/player2_life1.png");
 	t22.loadFromFile("images/player2_life2.png");
 	t23.loadFromFile("images/player2_life3.png");
+	t29.loadFromFile("images/player2win.png");
 
 	int p1x, p1y, p2x, p2y;
 	p1x = 100; p1y = 550; p2x = 800; p2y = 550;
@@ -42,6 +47,10 @@ int main(){
 	
 	while(app.isOpen()){
 		Sprite sStart(t0);
+		Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf_1(t5),sKnf_2(t6);
+		Sprite sPlayer1_life0(t10), sPlayer1_life1(t11), sPlayer1_life2(t12), sPlayer1_life3(t13), sPlayer2_life0(t20), sPlayer2_life1(t21), sPlayer2_life2(t22), sPlayer2_life3(t23);
+		Sprite sPlayer2_Win(t29);
+		Sprite sPlayer1_Win(t19);
 		app.draw(sStart);
 		app.display();
 		Event event;
@@ -61,9 +70,24 @@ int main(){
 				case Event::KeyPressed:
 					while(1){
 						//game start!
-						Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf_1(t5),sKnf_2(t6);
-						Sprite sPlayer1_life0(t10), sPlayer1_life1(t11), sPlayer1_life2(t12), sPlayer1_life3(t13), sPlayer2_life0(t20), sPlayer2_life1(t21), sPlayer2_life2(t22), sPlayer2_life3(t23);
 						std::pair<int, int> plat[4];
+						if(Keyboard::isKeyPressed(Keyboard::P))
+							break;
+							
+						if(!U1.get_life() || !U2.get_life()){
+							if(!U1.get_life()){
+								app.draw(sPlayer2_Win);
+								app.display();
+								sleep(4);
+							}
+							if(!U2.get_life()){
+								app.draw(sPlayer1_Win);	
+								app.display();
+								sleep(4);
+							}
+							
+							exit(0);
+						}
 							
 						plat[0].first = 50;
 						plat[0].second = 300;
@@ -157,38 +181,38 @@ int main(){
 
 						switch(U1.get_life()){
 							case 3:
-								sPlayer1_life3.setPosition(p1x+20,p1y);
+								sPlayer1_life3.setPosition(p1x,p1y-19);
 								app.draw(sPlayer1_life3);
 								break;
 							case 2:
-								sPlayer1_life2.setPosition(p1x+20,p1y);
+								sPlayer1_life2.setPosition(p1x,p1y-19);
 								app.draw(sPlayer1_life2);
 								break;
 							case 1:
-								sPlayer1_life1.setPosition(p1x+20,p1y);
+								sPlayer1_life1.setPosition(p1x,p1y-19);
 								app.draw(sPlayer1_life1);
 								break;
 							case 0:
-								sPlayer1_life0.setPosition(p1x+20,p1y);
+								sPlayer1_life0.setPosition(p1x,p1y-19);
 								app.draw(sPlayer1_life0);
 								break;
 						}
 						
 						switch(U2.get_life()){
 							case 3:
-								sPlayer2_life3.setPosition(p2x+20,p2y);
+								sPlayer2_life3.setPosition(p2x,p2y-20);
 								app.draw(sPlayer2_life3);
 								break;
 							case 2:
-								sPlayer2_life2.setPosition(p2x+20,p2y);
+								sPlayer2_life2.setPosition(p2x,p2y-20);
 								app.draw(sPlayer2_life2);
 								break;
 							case 1:
-								sPlayer2_life1.setPosition(p2x+20,p2y);
+								sPlayer2_life1.setPosition(p2x,p2y-20);
 								app.draw(sPlayer2_life1);
 								break;
 							case 0:
-								sPlayer2_life0.setPosition(p2x+20,p2y);
+								sPlayer2_life0.setPosition(p2x,p2y-20);
 								app.draw(sPlayer2_life0);
 								break;
 						}
@@ -212,9 +236,9 @@ int main(){
 
 						app.display();
 
-						if(Keyboard::isKeyPressed(Keyboard::P))
-							break;
+						
 					}
+						
 					break;
 				}
 			}
