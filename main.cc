@@ -13,7 +13,7 @@ int main(){
 	RenderWindow app(VideoMode(1000, 750), "Among Us!");
 	app.setFramerateLimit(60);
 
-	Texture t0, t1, t2, t3, t4, t5, t6;
+	Texture t0, t1, t2, t3, t4, t5, t6, t10, t11, t12, t13, t20, t21, t22, t23;
 	t0.loadFromFile("images/gamestart_2.png");
 	t1.loadFromFile("images/background.png");
 	t2.loadFromFile("images/platform.png");
@@ -21,6 +21,14 @@ int main(){
 	t4.loadFromFile("images/player2.png");
 	t5.loadFromFile("images/knife_1.png");
 	t6.loadFromFile("images/knife_2.png");
+	t10.loadFromFile("images/player1_life0.png");
+	t11.loadFromFile("images/player1_life1.png");
+	t12.loadFromFile("images/player1_life2.png");
+	t13.loadFromFile("images/player1_life3.png");
+	t20.loadFromFile("images/player2_life0.png");
+	t21.loadFromFile("images/player2_life1.png");
+	t22.loadFromFile("images/player2_life2.png");
+	t23.loadFromFile("images/player2_life3.png");
 
 	int p1x, p1y, p2x, p2y;
 	p1x = 100; p1y = 550; p2x = 800; p2y = 550;
@@ -54,22 +62,19 @@ int main(){
 					while(1){
 						//game start!
 						Sprite sBackground(t1), sPlate(t2), sPlayer1(t3), sPlayer2(t4), sKnf_1(t5),sKnf_2(t6);
-
-						std::pair<int, int> plat[5];
-	
-						plat[0].first = 100;
-						plat[0].second = 250;
+						Sprite sPlayer1_life0(t10), sPlayer1_life1(t11), sPlayer1_life2(t12), sPlayer1_life3(t13), sPlayer2_life0(t20), sPlayer2_life1(t21), sPlayer2_life2(t22), sPlayer2_life3(t23);
+						std::pair<int, int> plat[4];
+							
+						plat[0].first = 50;
+						plat[0].second = 300;
 						plat[1].first = 200;
 						plat[1].second = 500;
-						plat[2].first = 300;
-						plat[2].second = 250;
-
-						plat[3].first = 600;
-						plat[3].second = 250;
-						plat[4].first = 700;
-						plat[4].second = 500;
-						plat[5].first = 800;
-						plat[5].second = 250;
+						
+						plat[2].first = 650;
+						plat[2].second = 500;
+						plat[3].first = 800;
+						plat[3].second = 300;
+						
 						app.draw(sBackground);
 
 						for(int i=0;i<6;i++){
@@ -115,6 +120,45 @@ int main(){
 							bullet_1.set_position(make_pair(x,y));
 							fire_1=time(NULL);
 						}
+						switch(U1.get_life()){
+							case 3:
+								sPlayer1_life3.setPosition(p1x+20,p1y);
+								app.draw(sPlayer1_life3);
+								break;
+							case 2:
+								sPlayer1_life2.setPosition(p1x+20,p1y);
+								app.draw(sPlayer1_life2);
+								break;
+							case 1:
+								sPlayer1_life1.setPosition(p1x+20,p1y);
+								app.draw(sPlayer1_life1);
+								break;
+							case 0:
+								sPlayer1_life0.setPosition(p1x+20,p1y);
+								app.draw(sPlayer1_life0);
+								break;
+						}
+						
+						switch(U2.get_life()){
+							case 3:
+								sPlayer2_life3.setPosition(p2x+20,p2y);
+								app.draw(sPlayer2_life3);
+								break;
+							case 2:
+								sPlayer2_life2.setPosition(p2x+20,p2y);
+								app.draw(sPlayer2_life2);
+								break;
+							case 1:
+								sPlayer2_life1.setPosition(p2x+20,p2y);
+								app.draw(sPlayer2_life1);
+								break;
+							case 0:
+								sPlayer2_life0.setPosition(p2x+20,p2y);
+								app.draw(sPlayer2_life0);
+								break;
+						}
+							
+
 
 						if(Keyboard::isKeyPressed(Keyboard::L) && difftime(now,fire_2)>=1){
 							int x,y;
