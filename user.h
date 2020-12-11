@@ -20,7 +20,6 @@ public:
 	pair<int,int> get_position();
 	void MovePlayer(int type);
 	void Jump();
-	void Attack(User *u);
 	int get_life();
 	float get_dy();
 	void plus_y();

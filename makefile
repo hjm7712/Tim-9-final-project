@@ -15,4 +15,4 @@ bullet.o: bullet.cc
 run:
 		./game.exe
 clean:
-		rm *.o game.exe
+		rm -f *.o game.exe

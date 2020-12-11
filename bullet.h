@@ -8,8 +8,9 @@ class Bullet{
 		int velocity;
 		RenderWindow *app;
 	public:
-		Bullet(pair<int,int> position, RenderWindow *app);
+		Bullet();
 		~Bullet(){};
-		pair<int,int> Get_Position();
-		void Move(int dir);
+		void set_position(pair<int,int> position);
+		pair<int,int> move_1_position();
+		pair<int,int> move_2_position();
 };

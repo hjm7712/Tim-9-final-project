@@ -47,7 +47,7 @@ void User::Jump()
 	dy = -12;	
 }
 
-void User::Attack(User *u)
+/*void User::Attack(User *u)
 {
 	Bullet bullet(position, app);
 	if(id==0){
@@ -56,7 +56,7 @@ void User::Attack(User *u)
 	else if(id==1){
 		bullet.Move(1);
 	}
-}
+}*/
 
 int User::get_life()
 {
