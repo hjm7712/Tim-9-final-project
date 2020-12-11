@@ -87,6 +87,12 @@ int main(){
 						sPlayer2.setPosition(p2x,p2y);
 						app.draw(sPlayer2);
 
+
+						if(Keyboard::isKeyPressed(Keyboard::A)){
+							U1.Attack(&U2);
+						}
+
+
 						app.display();
 
 						if(Keyboard::isKeyPressed(Keyboard::P))
