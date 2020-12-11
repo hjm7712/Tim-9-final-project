@@ -8,7 +8,7 @@ User::User(int ID, RenderWindow *app)
 	id = ID;
 	position = ID ? make_pair(800, 600) : make_pair(100, 600);
 	dy = 0;
-	life = 5;
+	life = 3;
 	last_attack = time(NULL)-100;
 	this->app = app;
 }
@@ -28,7 +28,7 @@ void User::MovePlayer(int type)
 			position.first+=3;
 		else if(type == 2)
 			position.first-=3;
-		if(Keyboard::isKeyPressed(Keyboard::D) && dy == 0)
+		else if(type == 3)
 			Jump();
 	}
 	else		//player 2
@@ -37,14 +37,14 @@ void User::MovePlayer(int type)
 			position.first+=3;
 		else if(type == 2)
 			position.first-=3;
-		if(Keyboard::isKeyPressed(Keyboard::Up) && dy == 0)
+		else if(type == 3)
 			Jump();
 	}
 }
 
 void User::Jump()
 {
-	
+	dy = -12;	
 }
 
 void User::Attack(User *u)
@@ -61,6 +61,53 @@ void User::Attack(User *u)
 int User::get_life()
 {
 	return life;
+}
+
+float User::get_dy()
+{
+	return dy;
+}
+
+void User::plus_y()
+{
+	if(dy != 0)
+		dy += 0.2;
+	if(id == 0)
+	{
+		if(position.first < 200 && position.first > -30 && position.second <= 200 && position.second > 185 && dy > 0)
+		{
+			dy = 0;
+			position.second = 200;
+		}
+		else if(position.first < 350 && position.first > 120 && position.second <= 400 && position.second > 385 && dy > 0)
+		{
+			dy = 0;
+			position.second = 400;
+		}
+		else
+			dy += 0.1;
+	}
+	else
+	{
+		if(position.first < 950 && position.first > 720 && position.second <= 200 && position.second > 185 && dy > 0)
+		{
+			dy = 0;
+			position.second = 200;
+		}
+		else if(position.first < 800 && position.first > 570 && position.second <= 400 && position.second > 385 && dy > 0)
+		{
+			dy = 0;
+			position.second = 400;
+		}
+		else
+			dy += 0.1;
+	}
+	if(position.second > 600)
+	{
+		dy = 0;
+		position.second = 600;
+	}
+	position.second += dy;
 }
 
 

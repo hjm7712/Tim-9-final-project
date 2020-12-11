@@ -22,6 +22,8 @@ public:
 	void Jump();
 	void Attack(User *u);
 	int get_life();
+	float get_dy();
+	void plus_y();
 };
 
 

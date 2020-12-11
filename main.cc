@@ -94,10 +94,16 @@ int main(){
 							U1.MovePlayer(1);
 						if(Keyboard::isKeyPressed(Keyboard::X))
 							U1.MovePlayer(2);
+						if(Keyboard::isKeyPressed(Keyboard::D) && U1.get_dy() == 0)
+							U1.MovePlayer(3);
 						if(Keyboard::isKeyPressed(Keyboard::Right))
 							U2.MovePlayer(1);
 						if(Keyboard::isKeyPressed(Keyboard::Left))
 							U2.MovePlayer(2);
+						if(Keyboard::isKeyPressed(Keyboard::Up) && U2.get_dy() == 0)
+							U2.MovePlayer(3);
+						U1.plus_y();
+						U2.plus_y();
 
 						app.display();
 
