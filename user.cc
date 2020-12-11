@@ -25,18 +25,30 @@ void User::MovePlayer(int type)
 	if(id == 0)	//player 1
 	{
 		if(type == 1)
-			position.first+=3;
+		{
+			if(position.first < 380)
+				position.first+=3;
+		}
 		else if(type == 2)
-			position.first-=3;
+		{
+			if(position.first > -70)
+				position.first-=3;
+		}
 		else if(type == 3)
 			Jump();
 	}
 	else		//player 2
 	{
 		if(type == 1)
-			position.first+=3;
+		{
+			if(position.first < 990)
+				position.first+=3;
+		}
 		else if(type == 2)
-			position.first-=3;
+		{
+			if(position.first > 540)
+				position.first-=3;
+		}
 		else if(type == 3)
 			Jump();
 	}
