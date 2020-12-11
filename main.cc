@@ -13,11 +13,11 @@ using namespace sf;
 int main(){
 	srand(time(0));
 
-	RenderWindow app(VideoMode(1000, 750), "Among Us!");
+	RenderWindow app(VideoMode(1000, 750), "Battle Us!");
 	app.setFramerateLimit(60);
 
 	Texture t0, t1, t2, t3, t4, t5, t6, t10, t11, t12, t13, t19, t20, t21, t22, t23, t29;
-	t0.loadFromFile("images/gamestart_2.png");
+	t0.loadFromFile("images/Gamestart.png");
 	t1.loadFromFile("images/background.png");
 	t2.loadFromFile("images/platform.png");
 	t3.loadFromFile("images/player1.png");
